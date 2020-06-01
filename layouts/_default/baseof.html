@@ -34,8 +34,14 @@
   <body>
     {{ partial "header.html" . }}
     <main class="content">
+      <!-- <div id="fastSearch">
+        <ul id="searchResults">
+        </ul>
+      </div> -->
       {{ block "content" . }}{{ end }}
     </main>
+    <script src="/js/fuse.js"></script>
+    <script src="/js/fastsearch.js"></script>
     {{ partial "footer.html" . }}
     {{ if .Site.GoogleAnalytics }}
       {{ template "_internal/google_analytics.html" . }}

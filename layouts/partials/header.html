@@ -9,6 +9,9 @@
         <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
       {{ end }}
     {{ end }}
+    {{ if .Site.Params.showSearchBar }}
+      <input id="searchInput" tabindex="0" type="text" placeholder="Search">
+    {{ end }}
   </section>
   {{ else }}
   <section class="pure-u-1 nav-right">
@@ -17,6 +20,8 @@
         <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
       {{ end }}
     {{ end }}
-  </section>
+    {{ if .Site.Params.showSearchBar }}
+      <input id="searchInput" tabindex="0"  type="text" placeholder="Search">
+    {{ end }}  </section>
   {{ end }}
 </nav>
