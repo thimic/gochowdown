@@ -161,13 +161,23 @@ blockquote {
   margin-top: 2rem;
   margin-bottom: 2rem;
   margin-left: 0;
+  padding-top: .5rem;
+  padding-bottom: .25rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  background-color: lighten($color: #007fff, $amount: 45);
+  border-top: #007FFF;
+  border-top-width: 4px;
+  border-top-style: solid;
+  width: 100%;
 }
   blockquote,
   blockquote p {
-    font-size: 1.25rem;
     font-style: italic;
+    color: darken($color: #007fff, $amount: 25);
+  }
+  blockquote p strong {
+    color: #007fff;
   }
 
 h1, .h1 { font-size: 2rem }
