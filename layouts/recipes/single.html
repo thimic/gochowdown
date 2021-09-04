@@ -10,7 +10,8 @@
     {{ with $fullImage }}
       {{ $image := .Fill "1000x500 Center jpg q60" }}
         <div class="xs-p2">
-          <div class="image ratio bg-cover" style="background-image:url({{ $image.RelPermalink }});"></div>
+          <img itemprop="image" src="{{ $fullImage.RelPermalink }}">
+          <!-- <div class="image ratio bg-cover" style="background-image:url({{ $image.RelPermalink }});"></div> -->
         </div>
       {{ end }}
   {{ else }}
@@ -28,14 +29,20 @@
       <h1 class="post-title center m1 sm-mt3" itemprop="name">{{ .Title }}</h1>
     </header>
 
-    {{ if .Params.sourceURL }}
-      <div class="px2 mt3 clearfix">
-        <div class="sm-col-8 mx-auto" itemprop="description"><i>Original recipe: <a href="{{ .Params.sourceURL }}" target="blank_" >{{ .Params.sourceName | default "Link" }}</a></i></div>
+    <div class="px2 mt3 clearfix">
+      <div class="sm-col-8 mx-auto" style="color: gray; font-style: italic;">
+        {{ with .Params.prepTime }}<span style="font-weight: bold;" itemprop="prepTime">{{ . }} min</span> prep{{ end }}
+        {{ with .Params.cookTime }}<span style="font-weight: bold;" itemprop="cookTime">{{ . }} min</span> cook{{ end }}
+        {{ with .Params.totalTime }}<span style="font-weight: bold;" itemprop="totalTime">{{ . }} min</span> total{{ end }}
+        {{ with .Params.yield }}<span style="font-weight: bold;" itemprop="yield">{{ . }}</span> servings{{ end }}
       </div>
-    {{ end }}
+    </div>
 
     <div class="px2 mt3 clearfix">
       <div class="sm-col-8 mx-auto" itemprop="description">{{.Content}}</div>
+      {{ if .Params.sourceURL }}
+        <div class="sm-col-8 mx-auto" itemprop="sourceURL"><i>Original recipe: <a href="{{ .Params.sourceURL }}" target="blank_" >{{ .Params.sourceName | default "Link" }}</a></i></div>
+      {{ end }}
     </div>
 
     <!-- call up recipe and directions -->
